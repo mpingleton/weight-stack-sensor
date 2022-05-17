@@ -1,9 +1,14 @@
-void setup() {
-  // put your setup code here, to run once:
+#define echoPin 2
+#define triggerPin 4
 
+void setup() {
+  pinMode(echoPin, INPUT);
+  pinMode(triggerPin, OUTPUT);
+
+  Serial.begin(115200);
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
 
 }
