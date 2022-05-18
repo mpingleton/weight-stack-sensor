@@ -1,6 +1,17 @@
 #define echoPin 2
 #define triggerPin 4
 
+char inputBuffer[2] = {0, 0};
+
+bool pushBuffer(char c) {
+  // Move the characters.
+  inputBuffer[0] = inputBuffer[1];
+  inputBuffer[1] = c;
+
+  // Compare them.
+  return (inputBuffer[0] == 'A' && inputBuffer[1] == 'D');
+}
+
 unsigned long ping() {
   // Turn the pin 13 LED on.
   digitalWrite(13, HIGH);
@@ -28,6 +39,14 @@ void setup() {
 }
 
 void loop() {
-  delay(100);
-  Serial.println(ping());
+  if(Serial.available()) {
+    char c = Serial.read();
+    
+    if(pushBuffer(c)) {
+      Serial.println(ping());
+    }
+  }
+  else {
+    delay(2);
+  }
 }
