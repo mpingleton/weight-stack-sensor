@@ -1,5 +1,5 @@
-#define echoPin 2
-#define triggerPin 4
+#define echoPin 4
+#define triggerPin 2
 
 char inputBuffer[2] = {0, 0};
 
